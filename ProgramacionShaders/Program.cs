@@ -6,9 +6,12 @@ using OpenTK.Graphics.OpenGL4;
 
 class Game : GameWindow
 {
-    private int _vao;
-    private int _vbo;
+    // ID used by OpenGL
+    private int _vao; // vertex array object 
+    private int _vbo; // vertex buffer object 
+    private int _ebo; // element buffer object 
     private Shader _shader;
+    private Texture _texture;
 
     public Game(GameWindowSettings gws, NativeWindowSettings nws) : base(gws, nws) { }
 
@@ -17,26 +20,57 @@ class Game : GameWindow
         base.OnLoad();
 
         GL.ClearColor(0.1f, 0.1f, 0.15f, 1f);
-
+        // 4 vertices para generar un Quad 
+        //Un Quad no es un primitiva, un Quad son 2 triangulos 
+        //-----------------
+        //4 flotantes por vertice (x,y) & (u,v)
         float[] vertices =
-        {
-             0.0f,  0.6f,
-            -0.6f, -0.6f,
-             0.6f, -0.6f
+        {               //color
+           -0.5f, 0.5f,  1f,0f/*,0f*/,    // v0: izq, arriba
+           0.5f, -0.5f,  0f,1f/*,0f*/,    // v1: der, arriba
+           -0.5f, -0.5f,  0f,0f/*,0f*/,   // v2: izq, abajo
+           0.5f, -0.5f,   1f,1f,/*,0f*/    // v3: der, abajo 
         };
 
+        uint[] indices = {
+            // son los 2 triangulos del quad
+            //indicando sus posiciones y su frontera 
+            0,2,1, //Triangulo 1
+            2,3,1  //Triangulo 2
+         };
+
+        // Creamos/Generamos los objectos de OpenGL
         _vao = GL.GenVertexArray();
         _vbo = GL.GenBuffer();
+        _ebo = GL.GenBuffer();
 
+        //Activamos el VAO 
         GL.BindVertexArray(_vao);
-
+        
+        //Para el VBO, hacemos los "Blind"/ enlaces de datos con la GOU y los shaders.
         GL.BindBuffer(BufferTarget.ArrayBuffer, _vbo);
         GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
 
-        GL.VertexAttribPointer(0, 2, VertexAttribPointerType.Float, false, 2 * sizeof(float), 0);
+        //Iinicializamos el EBO
+        //Contiene los indices de como leer los vertices. El EBO se guarda en el VAO
+        // VAO es donde el arrayObject guarda e inicializa los vertices
+        //se hace espacio de meomoria de la gpu el cual tiene la cantidad de indices 
+        //Contiene los indices de como leer los vertices. El EBO se guarda en el VAO
+        GL.BindBuffer(BufferTarget.ElementArrayBuffer, _ebo);
+        GL.BufferData(BufferTarget.ElementArrayBuffer,indices.Length * sizeof(uint), indices, BufferUsageHint.StaticDraw);
+
+        // VAO sabe como leer el VBO
+        // los blindiamos 
+        //Posiciones 1: Colores 
+        GL.VertexAttribPointer(0, 2, VertexAttribPointerType.Float, false, 4 * sizeof(float), 0);
         GL.EnableVertexAttribArray(0);
 
-        _shader = new Shader("Shaders/Basic.vert", "Shaders/Basic.frag");
+        //Atributo 2: Colores 
+         GL.VertexAttribPointer(1, , VertexAttribPointerType.Float, false, 4* sizeof(float),2* sizeof(float));
+        GL.EnableVertexAttribArray(1); 
+
+        _texture = new Texture("Texture/LenaForsen.png");
+        _shader = new Shader("Shaders/textured.vert", "Shaders/textured.frag");
     }
 
     protected override void OnRenderFrame(FrameEventArgs e)
@@ -46,8 +80,19 @@ class Game : GameWindow
         GL.Clear(ClearBufferMask.ColorBufferBit);
 
         _shader.Use();
+        _shader.SetInt("uTex",0);
+        _texture.Use(TextureUnit,Texture0);
+        //ya que sabe leer el vao le pasamos los datos 
+        // Contiene VAO ya trae el VBO + EBO = al formato de como se tiene que leer
         GL.BindVertexArray(_vao);
-        GL.DrawArrays(PrimitiveType.Triangles, 0, 3);
+        //utilizando el shader dibujame los tringulos
+                                                   //aqui recibe un ebo porque ya 
+                                                   //tiene mas de 3 triangulos
+                                            //recibir
+                                            //+6 vertices 
+                                                                                //donde inicia el
+                                                                                //indice el ebo 
+        GL.DrawElements(PrimitiveType.Triangles, 6 , DrawElementsType.UnsignedInt,0);
 
         SwapBuffers();
     }
@@ -55,6 +100,7 @@ class Game : GameWindow
     protected override void OnUnload()
     {
         base.OnUnload();
+        GL.DeleteBuffer(_ebo);
         GL.DeleteBuffer(_vbo);
         GL.DeleteVertexArray(_vao);
         _shader.Dispose();

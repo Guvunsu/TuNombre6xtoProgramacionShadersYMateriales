@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zGQb0yzUurGh7LdL6eLRW8YHs73CCTwOceiEgO4SmWzEsLWLzWDj3w+zisnv/suTx2Zd49FlE+gu62B/cRVF2A==",
+  "dgSpecHash": "TbwsYoMP8IuGWMng5ePy+CcAVgaGwi+HXnaITKl5/y8emxj0FUxSIeysvTE06iQ0udyQHen9nhTu/xKpXfH+jA==",
   "success": true,
-  "projectFilePath": "I:\\Documentos\\Programacion\\ProgramacionShaders\\ProgramacionShaders.csproj",
+  "projectFilePath": "I:\\Documentos\\Programacion\\TuNombre6xtoProgramacionShadersYMateriales\\ProgramacionShaders\\ProgramacionShaders.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gavry\\.nuget\\packages\\opentk\\4.9.4\\opentk.4.9.4.nupkg.sha512",
     "C:\\Users\\gavry\\.nuget\\packages\\opentk.audio.openal\\4.9.4\\opentk.audio.openal.4.9.4.nupkg.sha512",
@@ -15,6 +15,7 @@
     "C:\\Users\\gavry\\.nuget\\packages\\opentk.windowing.common\\4.9.4\\opentk.windowing.common.4.9.4.nupkg.sha512",
     "C:\\Users\\gavry\\.nuget\\packages\\opentk.windowing.desktop\\4.9.4\\opentk.windowing.desktop.4.9.4.nupkg.sha512",
     "C:\\Users\\gavry\\.nuget\\packages\\opentk.windowing.graphicslibraryframework\\4.9.4\\opentk.windowing.graphicslibraryframework.4.9.4.nupkg.sha512",
+    "C:\\Users\\gavry\\.nuget\\packages\\stbimagesharp\\2.30.15\\stbimagesharp.2.30.15.nupkg.sha512",
     "C:\\Users\\gavry\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []
