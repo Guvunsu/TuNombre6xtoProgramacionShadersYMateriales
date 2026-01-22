@@ -35,7 +35,7 @@ public sealed class Shader : IDisposable
     }
 
     public void  SetInt(string name, int value){
-        int loc = GL.GetUniformLocation(Handle,Name);
+        int loc = GL.GetUniformLocation(Handle,name);
         GL.Uniform1(loc,value);
     }
 

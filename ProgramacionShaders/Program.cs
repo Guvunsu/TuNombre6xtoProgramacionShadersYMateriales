@@ -26,10 +26,10 @@ class Game : GameWindow
         //4 flotantes por vertice (x,y) & (u,v)
         float[] vertices =
         {               //color
-           -0.5f, 0.5f,  1f,0f/*,0f*/,    // v0: izq, arriba
-           0.5f, -0.5f,  0f,1f/*,0f*/,    // v1: der, arriba
+           -0.5f, 0.5f,  0f,1f/*,0f*/,    // v0: izq, arriba
+           0.5f, 0.5f,  1f,1f/*,0f*/,    // v1: der, arriba
            -0.5f, -0.5f,  0f,0f/*,0f*/,   // v2: izq, abajo
-           0.5f, -0.5f,   1f,1f,/*,0f*/    // v3: der, abajo 
+           0.5f, -0.5f,   1f,0f,/*,0f*/    // v3: der, abajo 
         };
 
         uint[] indices = {
@@ -66,10 +66,10 @@ class Game : GameWindow
         GL.EnableVertexAttribArray(0);
 
         //Atributo 2: Colores 
-         GL.VertexAttribPointer(1, , VertexAttribPointerType.Float, false, 4* sizeof(float),2* sizeof(float));
+         GL.VertexAttribPointer(1,2 , VertexAttribPointerType.Float, false, 4* sizeof(float),2* sizeof(float));
         GL.EnableVertexAttribArray(1); 
 
-        _texture = new Texture("Texture/LenaForsen.png");
+        _texture = new Texture("Textures/LenaForsen.png");
         _shader = new Shader("Shaders/textured.vert", "Shaders/textured.frag");
     }
 
@@ -81,7 +81,7 @@ class Game : GameWindow
 
         _shader.Use();
         _shader.SetInt("uTex",0);
-        _texture.Use(TextureUnit,Texture0);
+        _texture.Use(TextureUnit.Texture0);
         //ya que sabe leer el vao le pasamos los datos 
         // Contiene VAO ya trae el VBO + EBO = al formato de como se tiene que leer
         GL.BindVertexArray(_vao);

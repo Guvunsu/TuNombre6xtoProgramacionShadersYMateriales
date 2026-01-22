@@ -1,8 +1,8 @@
 using OpenTK.Graphics.OpenGL4;
-using stbImageSharp;
+using StbImageSharp;
 
 public sealed class Texture: IDisposable {
-    public int Handle (get;)
+    public int Handle {get;}
 
     public Texture(string path){
         Handle = GL.GenTexture();
@@ -23,15 +23,15 @@ public sealed class Texture: IDisposable {
                         img.Data);
 
         GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
-        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrasT, (int)TextureWrapMode.Repeat);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
         GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.LinearMipmapLinear);
         GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
 
         GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
-        )
     }
     public void Use(TextureUnit unit){
         GL.ActiveTexture(unit);
-        GL.BlindTexture(TextureTarget.Texture2D,Handle);  
+        GL.BindTexture(TextureTarget.Texture2D,Handle);  
     }
+     public void Dispose() => GL.DeleteTexture(Handle);
 }
