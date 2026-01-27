@@ -10,6 +10,7 @@ class Game : GameWindow
     private int _vao; // vertex array object 
     private int _vbo; // vertex buffer object 
     private int _ebo; // element buffer object 
+    private float _time; // acumulador de tiempo
     private Shader _shader;
     private Texture _texture;
 
@@ -59,18 +60,32 @@ class Game : GameWindow
         GL.BindBuffer(BufferTarget.ElementArrayBuffer, _ebo);
         GL.BufferData(BufferTarget.ElementArrayBuffer,indices.Length * sizeof(uint), indices, BufferUsageHint.StaticDraw);
 
+        //Atributos:
+        //layout (0) -> aPos(vec2)
+        //layout (1) -> aUV(vec2)
+        int stride = 4 * sizeof(float);
+
         // VAO sabe como leer el VBO
         // los blindiamos 
         //Posiciones 1: Colores 
-        GL.VertexAttribPointer(0, 2, VertexAttribPointerType.Float, false, 4 * sizeof(float), 0);
+        GL.VertexAttribPointer(0, 2, VertexAttribPointerType.Float, false, 4 * sizeof(float),stride, 0);
         GL.EnableVertexAttribArray(0);
 
         //Atributo 2: Colores 
-         GL.VertexAttribPointer(1,2 , VertexAttribPointerType.Float, false, 4* sizeof(float),2* sizeof(float));
+         GL.VertexAttribPointer(1,2 , VertexAttribPointerType.Float, false,stride, 2* sizeof(float),2* sizeof(float));
         GL.EnableVertexAttribArray(1); 
 
-        _texture = new Texture("Textures/LenaForsen.png");
-        _shader = new Shader("Shaders/textured.vert", "Shaders/textured.frag");
+        //sHADERS (VERTEX CON MVP WHICH MEANS MODELOS VISTA Y PROYECCION)
+         _texture = new Texture("Shaders/textured_mvp.vert", "Shaders/textured.frag");
+
+         //TEXTURA
+         _tex =new Texture("Textures/LenaForsen.png");
+
+         //conectar sampler con texture unit 0 
+           _shader.Use();
+            _shader.SetInt("uTex",0);
+       /* _texture = new Texture("Textures/LenaForsen.png");*/
+        /*_shader = new Shader("Shaders/textured.vert", "Shaders/textured.frag");*/
     }
 
     protected override void OnRenderFrame(FrameEventArgs e)
@@ -78,10 +93,30 @@ class Game : GameWindow
         base.OnRenderFrame(e);
 
         GL.Clear(ClearBufferMask.ColorBufferBit);
+//1) construir matrices
 
+// model: rotacion 2d + un poquito de escala opcional
+var model = Matrix4.CreateRotationZ(_time)* Matrix4.CreateScale(1.0f);
+//view : identidad (no camara todavia)
+var view = Matrix4.Identity;
+
+//projection: Ortho para 2d (encaja bien con el quad en [-1,1])
+//left,right,bottom,top,znear,zfar
+var proj = Matrix4.CreateOrthographicOffCenter(-1f,1f,-1f,1f,-1f,1f);
+
+//orden tipico para OPENGL: MVP =model *view *proj o proj * view * model segun convencion
+//con esta configuracion (y el shader umpvp * vec4),suele ir bien con:
+var mvp = model * view * proj;
+
+//2) enviar uniforme al shader
         _shader.Use();
-        _shader.SetInt("uTex",0);
+
+       /* _shader.SetInt("uTex",0);*/
+       _shader.SetMatrix4("uMVP", mvp);
+
+       //3) bind textura en texture0 y dibujar 
         _texture.Use(TextureUnit.Texture0);
+
         //ya que sabe leer el vao le pasamos los datos 
         // Contiene VAO ya trae el VBO + EBO = al formato de como se tiene que leer
         GL.BindVertexArray(_vao);
