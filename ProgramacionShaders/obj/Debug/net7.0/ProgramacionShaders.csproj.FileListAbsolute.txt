@@ -107,3 +107,4 @@ C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\Progr
 C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\obj\Debug\net7.0\ProgramacionShaders.genruntimeconfig.cache
 C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\obj\Debug\net7.0\ref\ProgramacionShaders.dll
 C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\Textured_mvp.vert
+C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Textures\Pikachu.jpg

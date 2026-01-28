@@ -14,6 +14,11 @@ class Game : GameWindow
     private Shader _shader;
     private Texture _texture;
 
+      private int _vao2; // vertex array object 
+    private int _vbo2; // vertex buffer object 
+    private int _ebo2; // element buffer object 
+    private Texture _texture2;
+
     public Game(GameWindowSettings gws, NativeWindowSettings nws) : base(gws, nws) { }
 
     protected override void OnLoad()
@@ -32,7 +37,14 @@ class Game : GameWindow
            -0.5f, -0.5f,  0f,0f/*,0f*/,   // v2: izq, abajo
            0.5f, -0.5f,   1f,0f,/*,0f*/    // v3: der, abajo 
         };
-
+        //pikachu
+        float[]vertices2={
+         0.5f,0.5f,0f,1f,
+          1.5f,0.5f,1f,1f,
+          0.5f,-0.5f,0f,0f,
+          1.5f,-0.5f,1f,0f,
+          
+        };
         uint[] indices = {
             // son los 2 triangulos del quad
             //indicando sus posiciones y su frontera 
@@ -45,20 +57,41 @@ class Game : GameWindow
         _vbo = GL.GenBuffer();
         _ebo = GL.GenBuffer();
 
-        //Activamos el VAO 
+//Activamos el VAO 
         GL.BindVertexArray(_vao);
-        
-        //Para el VBO, hacemos los "Blind"/ enlaces de datos con la GOU y los shaders.
+         //Para el VBO, hacemos los "Blind"/ enlaces de datos con la GOU y los shaders.
         GL.BindBuffer(BufferTarget.ArrayBuffer, _vbo);
         GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
 
-        //Iinicializamos el EBO
+             //Iinicializamos el EBO
         //Contiene los indices de como leer los vertices. El EBO se guarda en el VAO
         // VAO es donde el arrayObject guarda e inicializa los vertices
         //se hace espacio de meomoria de la gpu el cual tiene la cantidad de indices 
         //Contiene los indices de como leer los vertices. El EBO se guarda en el VAO
         GL.BindBuffer(BufferTarget.ElementArrayBuffer, _ebo);
         GL.BufferData(BufferTarget.ElementArrayBuffer,indices.Length * sizeof(uint), indices, BufferUsageHint.StaticDraw);
+
+        //Pikachu
+         _vao2 = GL.GenVertexArray();
+        _vbo2 = GL.GenBuffer();
+        _ebo2 = GL.GenBuffer();
+
+        //Activamos el VAO 
+        GL.BindVertexArray(_vao2);
+         //Para el VBO, hacemos los "Blind"/ enlaces de datos con la GOU y los shaders.
+        GL.BindBuffer(BufferTarget.ArrayBuffer, _vbo2);
+        GL.BufferData(BufferTarget.ArrayBuffer, vertices2.Length * sizeof(float), vertices2, BufferUsageHint.StaticDraw);
+
+   
+             //Iinicializamos el EBO
+        //Contiene los indices de como leer los vertices. El EBO se guarda en el VAO
+        // VAO es donde el arrayObject guarda e inicializa los vertices
+        //se hace espacio de meomoria de la gpu el cual tiene la cantidad de indices 
+        //Contiene los indices de como leer los vertices. El EBO se guarda en el VAO
+        GL.BindBuffer(BufferTarget.ElementArrayBuffer, _ebo2);
+        GL.BufferData(BufferTarget.ElementArrayBuffer,indices.Length * sizeof(uint), indices, BufferUsageHint.StaticDraw);
+
+         GL.BindVertexArray(_vao2);
 
         //Atributos:
         //layout (0) -> aPos(vec2)
@@ -78,8 +111,10 @@ class Game : GameWindow
         //sHADERS (VERTEX CON MVP WHICH MEANS MODELOS VISTA Y PROYECCION)
          _shader = new Shader("Shaders/Textured_mvp.vert", "Shaders/textured.frag");
 
-         //TEXTURA
+         //Textura
          _texture =new Texture("Textures/LenaForsen.png");
+            //pikachu Textura
+            _texture2 =new Texture("Textures/Pikachu.jpg");
 
          //conectar sampler con texture unit 0 
            _shader.Use();
@@ -97,8 +132,10 @@ class Game : GameWindow
 
 // model: rotacion 2d + un poquito de escala opcional
 var model = Matrix4.CreateRotationZ(_time)* Matrix4.CreateScale(1.0f);
+var model2 = Matrix4.CreateRotationZ(-1*_time)* Matrix4.CreateScale(1.0f);
 //view : identidad (no camara todavia)
 var view = Matrix4.Identity;
+
 
 //projection: Ortho para 2d (encaja bien con el quad en [-1,1])
 //left,right,bottom,top,znear,zfar
@@ -110,16 +147,30 @@ var mvp = model * view * proj;
 
 //2) enviar uniforme al shader
         _shader.Use();
-
        /* _shader.SetInt("uTex",0);*/
        _shader.SetMatrix4("uMVP", mvp);
-
+      
        //3) bind textura en texture0 y dibujar 
         _texture.Use(TextureUnit.Texture0);
 
-        //ya que sabe leer el vao le pasamos los datos 
+                //ya que sabe leer el vao le pasamos los datos 
         // Contiene VAO ya trae el VBO + EBO = al formato de como se tiene que leer
         GL.BindVertexArray(_vao);
+        
+             //utilizando el shader dibujame los tringulos
+                                                   //aqui recibe un ebo porque ya 
+                                                   //tiene mas de 3 triangulos
+                                            //recibir
+                                            //+6 vertices 
+                                                                                //donde inicia el
+                                                                                //indice el ebo 
+        GL.DrawElements(PrimitiveType.Triangles, 6 , DrawElementsType.UnsignedInt,0);
+        //Pikachu
+        var mvp2 = model2 * view * proj;
+        _shader.Use();
+       _shader.SetMatrix4("uMVP", mvp2);
+       _texture2.Use(TextureUnit.Texture0);
+        GL.BindVertexArray(_vao2);
         //utilizando el shader dibujame los tringulos
                                                    //aqui recibe un ebo porque ya 
                                                    //tiene mas de 3 triangulos
@@ -128,6 +179,7 @@ var mvp = model * view * proj;
                                                                                 //donde inicia el
                                                                                 //indice el ebo 
         GL.DrawElements(PrimitiveType.Triangles, 6 , DrawElementsType.UnsignedInt,0);
+
 
         SwapBuffers();
     }protected override void OnUpdateFrame(FrameEventArgs e){
@@ -141,6 +193,10 @@ var mvp = model * view * proj;
         GL.DeleteBuffer(_ebo);
         GL.DeleteBuffer(_vbo);
         GL.DeleteVertexArray(_vao);
+
+        GL.DeleteBuffer(_ebo2);
+        GL.DeleteBuffer(_vbo2);
+        GL.DeleteVertexArray(_vao2);
         _shader.Dispose();
     }
 }
