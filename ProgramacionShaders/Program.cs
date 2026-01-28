@@ -68,22 +68,22 @@ class Game : GameWindow
         // VAO sabe como leer el VBO
         // los blindiamos 
         //Posiciones 1: Colores 
-        GL.VertexAttribPointer(0, 2, VertexAttribPointerType.Float, false, 4 * sizeof(float),stride, 0);
+        GL.VertexAttribPointer(0, 2, VertexAttribPointerType.Float, false,stride, 0);
         GL.EnableVertexAttribArray(0);
 
         //Atributo 2: Colores 
-         GL.VertexAttribPointer(1,2 , VertexAttribPointerType.Float, false,stride, 2* sizeof(float),2* sizeof(float));
+         GL.VertexAttribPointer(1,2 , VertexAttribPointerType.Float, false,stride, 2* sizeof(float));
         GL.EnableVertexAttribArray(1); 
 
         //sHADERS (VERTEX CON MVP WHICH MEANS MODELOS VISTA Y PROYECCION)
-         _texture = new Texture("Shaders/textured_mvp.vert", "Shaders/textured.frag");
+         _shader = new Shader("Shaders/Textured_mvp.vert", "Shaders/textured.frag");
 
          //TEXTURA
-         _tex =new Texture("Textures/LenaForsen.png");
+         _texture =new Texture("Textures/LenaForsen.png");
 
          //conectar sampler con texture unit 0 
            _shader.Use();
-            _shader.SetInt("uTex",0);
+           _shader.SetInt("uTex",0);
        /* _texture = new Texture("Textures/LenaForsen.png");*/
         /*_shader = new Shader("Shaders/textured.vert", "Shaders/textured.frag");*/
     }
@@ -130,8 +130,11 @@ var mvp = model * view * proj;
         GL.DrawElements(PrimitiveType.Triangles, 6 , DrawElementsType.UnsignedInt,0);
 
         SwapBuffers();
+    }protected override void OnUpdateFrame(FrameEventArgs e){
+        base.OnUpdateFrame(e);
+        //tiempo acumulado(segundos)
+        _time+=(float)e.Time;
     }
-
     protected override void OnUnload()
     {
         base.OnUnload();
