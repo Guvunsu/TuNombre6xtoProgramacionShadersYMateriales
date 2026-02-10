@@ -44,6 +44,16 @@ public sealed class Shader : IDisposable
         OpenTK.Graphics.OpenGL4.GL.UniformMatrix4(loc,false,ref value);
     }
 
+    public void SetFloat (string name, float value){
+        int loc = OpenTK.Graphics.OpenGL4.GL.GetUniformLocation(Handle,name);
+        OpenTK.Graphics.OpenGL4.GL.Uniform1(loc,value);
+    }
+
+    public void SetVector3(string name, OpenTK.Mathematics.Vector3 value){
+        int loc = OpenTK.Graphics.OpenGL4.GL.GetUniformLocation(Handle,name);
+        OpenTK.Graphics.OpenGL4.GL.Uniform3(loc,value);
+    }
+
     public void Use() => GL.UseProgram(Handle);
 
     public void Dispose() => GL.DeleteProgram(Handle);

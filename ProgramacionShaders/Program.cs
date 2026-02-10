@@ -310,7 +310,7 @@ class Game : GameWindow
         // ============================================================
         // B) Shader compartido (uno para todos los objetos)
         // ============================================================
-        _shader = new Shader("Shaders/textured_mvp.vert", "Shaders/textured.frag");
+        _shader = new Shader("Shaders/lit_flat.vert", "Shaders/lit_flat.frag");
 
         // ============================================================
         // C) Texturas (una por “material”)
@@ -336,6 +336,12 @@ class Game : GameWindow
             View = Matrix4.Identity,
             Projection = Matrix4.CreateOrthographicOffCenter(-1f, 1f, -1f, 1f, -1f, 1f)
         };
+
+        _shader.Use();
+        _shader.SetVector3("uLightColor", new Vector3(1.0f, 0.0f, 0.0f));
+         _shader.SetVector3("uBaseColor", new Vector3(1.0f, 1.0f, 1.0f));
+         _shader.SetFloat("uAmbient", 0.5f); // conectar sampler2D uTex con texture unit 0
+
 
         // ============================================================
         // F) Crear instancias (Renderables)
