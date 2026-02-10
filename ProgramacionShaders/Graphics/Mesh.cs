@@ -15,23 +15,45 @@ public sealed class Mesh : IDisposable
 
         GL.BindVertexArray(_vao);
 
+        // VBO
         GL.BindBuffer(BufferTarget.ArrayBuffer, _vbo);
-        GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
+        GL.BufferData(
+            BufferTarget.ArrayBuffer,
+            vertices.Length * sizeof(float),
+            vertices,
+            BufferUsageHint.StaticDraw
+        );
 
+        // EBO
         GL.BindBuffer(BufferTarget.ElementArrayBuffer, _ebo);
-        GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(uint), indices, BufferUsageHint.StaticDraw);
+        GL.BufferData(
+            BufferTarget.ElementArrayBuffer,
+            indices.Length * sizeof(uint),
+            indices,
+            BufferUsageHint.StaticDraw
+        );
 
-        // Config de atributos (VAO)
+        // 🔴 GARANTIZAR VBO ACTIVO para los atributos
+        GL.BindBuffer(BufferTarget.ArrayBuffer, _vbo);
+
+        // Atributos (capturan estado del VAO)
         setupAttribs.Invoke();
 
-        // Limpieza de binds (opcional)
+        // Limpieza
         GL.BindVertexArray(0);
+        GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
     }
 
     public void Draw()
     {
         GL.BindVertexArray(_vao);
-        GL.DrawElements(PrimitiveType.Triangles, _indexCount, DrawElementsType.UnsignedInt, 0);
+        GL.DrawElements(
+            PrimitiveType.Triangles,
+            _indexCount,
+            DrawElementsType.UnsignedInt,
+            0
+        );
+        GL.BindVertexArray(0);
     }
 
     public void Dispose()
