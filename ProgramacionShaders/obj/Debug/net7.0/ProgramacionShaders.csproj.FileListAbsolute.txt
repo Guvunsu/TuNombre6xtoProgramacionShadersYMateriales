@@ -66,7 +66,6 @@ I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\Programaci
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\obj\Debug\net7.0\ref\ProgramacionShaders.dll
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\textured.frag
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\textured.vert
-I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Textures\LenaForsen.png
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\StbImageSharp.dll
 C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\Basic.Frag
 C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\Basic.Vert
@@ -108,3 +107,8 @@ C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\Progr
 C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\obj\Debug\net7.0\ref\ProgramacionShaders.dll
 C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\Textured_mvp.vert
 C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Textures\Pikachu.jpg
+I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\Textured_mvp.vert
+I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Textures\Pikachu.jpg
+I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\lit_flat.frag
+I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\lit_flat.vert
+I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Textures\Lenna.png
