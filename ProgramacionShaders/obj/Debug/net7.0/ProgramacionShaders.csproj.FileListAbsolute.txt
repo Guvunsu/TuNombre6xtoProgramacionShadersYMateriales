@@ -73,7 +73,6 @@ C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\Progr
 C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\textured.vert
 C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\vertexColor.frag
 C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\vertexColor.vert
-C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Textures\LenaForsen.png
 C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\ProgramacionShaders.exe
 C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\ProgramacionShaders.deps.json
 C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\ProgramacionShaders.runtimeconfig.json
@@ -112,3 +111,6 @@ I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\Programaci
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\lit_flat.frag
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\lit_flat.vert
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Textures\Lenna.png
+C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\lit_flat.frag
+C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\lit_flat.vert
+C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Textures\Lenna.png
