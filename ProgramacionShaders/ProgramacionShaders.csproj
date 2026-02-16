@@ -7,15 +7,24 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <!-- Paquetes -->
   <ItemGroup>
     <PackageReference Include="OpenTK" Version="4.9.4" />
-    <None Update="Shaders\**\*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update= "Textures\**\*">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <PackageReference Include="StbImageSharp" Version="2.30.15" />
+  </ItemGroup>
+
+  <!-- Copiar Shaders al ejecutable -->
+  <ItemGroup>
+    <Content Include="Shaders\**\*.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <!-- Copiar Texturas al ejecutable -->
+  <ItemGroup>
+    <Content Include="Textures\**\*.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

@@ -10,20 +10,18 @@ public sealed class Texture : IDisposable
         Handle = GL.GenTexture();
         Use(TextureUnit.Texture0);
 
-        //Cargamos la imagen.
-        ImageResult img;
+        // Voltear imagen (OpenGL usa UV invertidas)
+        StbImage.stbi_set_flip_vertically_on_load(1);
 
-        var stream = File.OpenRead(path);
-        img = ImageResult.FromStream(stream, ColorComponents.RedGreenBlueAlpha);
+        using var stream = File.OpenRead(path);
+        var img = ImageResult.FromStream(stream, ColorComponents.RedGreenBlueAlpha);
 
-
-        // Cargamos a la GPU
         GL.TexImage2D(TextureTarget.Texture2D, 0,
-                    PixelInternalFormat.Rgba,
-                    img.Width, img.Height, 0,
-                    PixelFormat.Rgba,
-                    PixelType.UnsignedByte,
-                    img.Data);
+            PixelInternalFormat.Rgba,
+            img.Width, img.Height, 0,
+            PixelFormat.Rgba,
+            PixelType.UnsignedByte,
+            img.Data);
 
         GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
         GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
@@ -39,5 +37,8 @@ public sealed class Texture : IDisposable
         GL.BindTexture(TextureTarget.Texture2D, Handle);
     }
 
-    public void Dispose() => GL.DeleteTexture(Handle);
+    public void Dispose()
+    {
+        GL.DeleteTexture(Handle);
+    }
 }
