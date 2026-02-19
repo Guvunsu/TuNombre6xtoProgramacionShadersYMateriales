@@ -1,44 +1,70 @@
+using System;
+using System.IO;
 using OpenTK.Graphics.OpenGL4;
 using StbImageSharp;
 
-public sealed class Texture : IDisposable
+public static class Texture
 {
-    public int Handle { get; }
-
-    public Texture(string path)
+    public static int Load2D(string path, bool srgb = false)
     {
-        Handle = GL.GenTexture();
-        Use(TextureUnit.Texture0);
+        if (!File.Exists(path))
+            throw new FileNotFoundException($"Textura no encontrada: {path}");
 
-        // Voltear imagen (OpenGL usa UV invertidas)
-        StbImage.stbi_set_flip_vertically_on_load(1);
+        ImageResult image;
+        using (var stream = File.OpenRead(path))
+        {
+            image = ImageResult.FromStream(stream, ColorComponents.RedGreenBlueAlpha);
+        }
 
-        using var stream = File.OpenRead(path);
-        var img = ImageResult.FromStream(stream, ColorComponents.RedGreenBlueAlpha);
+        FlipVertical(image.Data, image.Width, image.Height);
 
-        GL.TexImage2D(TextureTarget.Texture2D, 0,
-            PixelInternalFormat.Rgba,
-            img.Width, img.Height, 0,
+        int handle = GL.GenTexture();
+        GL.BindTexture(TextureTarget.Texture2D, handle);
+
+        PixelInternalFormat internalFormat =
+            srgb ? PixelInternalFormat.Srgb8Alpha8
+                 : PixelInternalFormat.Rgba8;
+
+        GL.TexImage2D(
+            TextureTarget.Texture2D,
+            0,
+            internalFormat,
+            image.Width,
+            image.Height,
+            0,
             PixelFormat.Rgba,
             PixelType.UnsignedByte,
-            img.Data);
+            image.Data
+        );
 
+        // Parámetros
         GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
         GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
+
         GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.LinearMipmapLinear);
         GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
 
         GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
+
+        GL.BindTexture(TextureTarget.Texture2D, 0);
+
+        return handle;
     }
 
-    public void Use(TextureUnit unit)
+    private static void FlipVertical(byte[] data, int width, int height)
     {
-        GL.ActiveTexture(unit);
-        GL.BindTexture(TextureTarget.Texture2D, Handle);
-    }
+    int stride = width * 4;
+    byte[] row = new byte[stride];
 
-    public void Dispose()
+    for (int y = 0; y < height / 2; y++)
     {
-        GL.DeleteTexture(Handle);
+        int top = y * stride;
+        int bottom = (height - 1 - y) * stride;
+
+        System.Buffer.BlockCopy(data, top, row, 0, stride);
+        System.Buffer.BlockCopy(data, bottom, data, top, stride);
+        System.Buffer.BlockCopy(row, 0, data, bottom, stride);
     }
+}
+
 }

@@ -27,4 +27,10 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+  <None Include="Shaders\**\*.*" CopyToOutputDirectory="PreserveNewest" />
+  <None Include="Textures\**\*.*" CopyToOutputDirectory="PreserveNewest" />
+</ItemGroup>
+
+
 </Project>

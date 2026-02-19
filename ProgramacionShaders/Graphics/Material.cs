@@ -3,21 +3,27 @@ using OpenTK.Graphics.OpenGL4;
 public sealed class Material
 {
     public Shader Shader { get; }
-    public Texture Texture { get; }
 
-    public Material(Shader shader, Texture texture)
+    public int DiffuseTexture { get; }
+    public int NormalTexture { get; }
+
+    public Material(Shader shader, int diffuse, int normal)
     {
         Shader = shader;
-        Texture = texture;
+        DiffuseTexture = diffuse;
+        NormalTexture = normal;
     }
 
     public void Bind()
     {
         Shader.Use();
-        Texture.Use(TextureUnit.Texture0);
-        // Esto puedes hacerlo 1 vez al cargar si siempre usas Texture0,
-        // pero no pasa nada por dejarlo aquí.
-        Shader.SetInt("uTex", 0);
+
+        GL.ActiveTexture(TextureUnit.Texture0);
+        GL.BindTexture(TextureTarget.Texture2D, DiffuseTexture);
+        Shader.SetInt("uDiffuse", 0);
+
+        GL.ActiveTexture(TextureUnit.Texture1);
+        GL.BindTexture(TextureTarget.Texture2D, NormalTexture);
+        Shader.SetInt("uNormalMap", 1);
     }
 }
-

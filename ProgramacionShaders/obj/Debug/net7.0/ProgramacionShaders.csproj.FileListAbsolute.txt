@@ -72,18 +72,23 @@ C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\Progr
 C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\lit_flat.frag
 C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\lit_flat.vert
 C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Textures\Lenna.png
-I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\ProgramacionShaders.exe
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\Basic.Frag
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\Basic.Vert
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\lit_flat.frag
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\lit_flat.vert
+I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\lit_normal.frag
+I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\lit_normal.vert
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\textured.frag
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\textured.vert
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\Textured_mvp.vert
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\vertexColor.frag
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\vertexColor.vert
+I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Textures\castle_diff.jpg
+I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Textures\castle_nor_dx.png
+I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Textures\castle_nor_gl.png
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Textures\Lenna.png
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Textures\Pikachu.jpg
+I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\ProgramacionShaders.exe
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\ProgramacionShaders.deps.json
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\ProgramacionShaders.runtimeconfig.json
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\ProgramacionShaders.dll
