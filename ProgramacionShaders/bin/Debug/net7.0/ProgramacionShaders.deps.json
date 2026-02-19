@@ -9,7 +9,8 @@
       "ProgramacionShaders/1.0.0": {
         "dependencies": {
           "OpenTK": "4.9.4",
-          "StbImageSharp": "2.30.15"
+          "StbImageSharp": "2.30.15",
+          "StbiSharp": "1.2.1"
         },
         "runtime": {
           "ProgramacionShaders.dll": {}
@@ -162,6 +163,36 @@
           }
         }
       },
+      "StbiSharp/1.2.1": {
+        "runtime": {
+          "lib/netcoreapp3.0/StbiSharp.dll": {
+            "assemblyVersion": "1.2.1.0",
+            "fileVersion": "1.2.1.0"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libstbi.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/libstbi.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/stbi.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/stbi.lib": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {}
     }
   },
@@ -254,6 +285,13 @@
       "sha512": "sha512-7QqbupVhz2kcFUPTgMw4iHR9rYDHGundzzee19Mwmd1typ2Lnv8EVJcLJxlkeBM2+4ex0NwsMtdbGSJctp1XCQ==",
       "path": "stbimagesharp/2.30.15",
       "hashPath": "stbimagesharp.2.30.15.nupkg.sha512"
+    },
+    "StbiSharp/1.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jbi94g3UDVAC3vH6jKZmmADH4Z6tGqbcdlyGhT/WZN9UE8OjjvpGFE5zF+UCSmIdya6iJ+Zo5VvxdQywSKN0Uw==",
+      "path": "stbisharp/1.2.1",
+      "hashPath": "stbisharp.1.2.1.nupkg.sha512"
     },
     "System.Runtime.CompilerServices.Unsafe/6.0.0": {
       "type": "package",

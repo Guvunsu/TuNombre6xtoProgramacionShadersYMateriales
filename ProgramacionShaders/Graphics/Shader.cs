@@ -14,12 +14,10 @@ public sealed class Shader : IDisposable
 
         if (!File.Exists(fragmentPath))
             throw new FileNotFoundException($"No se encontró el fragment shader: {fragmentPath}");
-    Console.WriteLine("Vertex Path: " + vertexPath);
-    Console.WriteLine("Fragment Path: " + fragmentPath);
+
         string vertexSrc = File.ReadAllText(vertexPath);
         string fragmentSrc = File.ReadAllText(fragmentPath);
-    Console.WriteLine("Vertex Length: " + vertexSrc.Length);
-    Console.WriteLine("Fragment Length: " + fragmentSrc.Length);
+
         int vs = CompileShader(ShaderType.VertexShader, vertexSrc);
         int fs = CompileShader(ShaderType.FragmentShader, fragmentSrc);
 

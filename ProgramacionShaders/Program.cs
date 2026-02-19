@@ -111,8 +111,8 @@ public sealed class Game : GameWindow
             Path.Combine(baseDir, "Shaders", "lit_normal.frag")
         );
 
-        _texDiffuse = Texture.Load2D(Path.Combine(baseDir, "Textures", "castle_diff.jpg"), srgb: true);
-        _texNormal  = Texture.Load2D(Path.Combine(baseDir, "Textures", "castle_nor_gl.png"),  srgb: false);
+        _texDiffuse = Texture.Load2D(Path.Combine(baseDir, "Textures", "Pikachu.jpg"), srgb: true);
+        _texNormal  = Texture.Load2D(Path.Combine(baseDir, "Textures", "Lenna.png"),  srgb: false);
 
         _projection = Matrix4.CreatePerspectiveFieldOfView(
             MathHelper.DegreesToRadians(45f),
@@ -164,10 +164,10 @@ public sealed class Game : GameWindow
         _shader.SetMatrix4("uProj", _projection);
 
         // Luz direccional
-        _shader.SetVector3("uLightDir", Vector3.Normalize(new Vector3(0.2f, 0.4f, 1f)));
-        _shader.SetVector3("uLightColor", new Vector3(0.2f, 0.4f, 1f));
-        _shader.SetVector3("uBaseColor", new Vector3(0.5f, 1f, 0.6f));
-        _shader.SetFloat("uAmbient", 0.20f);
+        _shader.SetVector3("uLightDir", Vector3.Normalize(new Vector3(0.9f, 0.9f, 0.9f)));
+        _shader.SetVector3("uLightColor", new Vector3(0.1f, 0.5f, 0.6f));
+        _shader.SetVector3("uBaseColor", new Vector3(0.4f, 0.9f, 0.2f));
+        _shader.SetFloat("uAmbient", 0.50f);
 
         // Texturas
         GL.ActiveTexture(TextureUnit.Texture0);

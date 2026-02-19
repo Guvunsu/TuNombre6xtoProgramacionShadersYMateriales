@@ -119,3 +119,13 @@ I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\Programaci
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\obj\Debug\net7.0\ProgramacionShaders.pdb
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\obj\Debug\net7.0\ProgramacionShaders.genruntimeconfig.cache
 I:\Documentos\Programacion\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\obj\Debug\net7.0\ref\ProgramacionShaders.dll
+C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\lit_normal.frag
+C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Shaders\lit_normal.vert
+C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Textures\castle_diff.jpg
+C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Textures\castle_nor_dx.png
+C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\Textures\castle_nor_gl.png
+C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\StbiSharp.dll
+C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\runtimes\linux-x64\native\libstbi.so
+C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\runtimes\osx-x64\native\libstbi.dylib
+C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\runtimes\win-x64\native\stbi.dll
+C:\Users\PC2-Alumno 1\Documents\TuNombre6xtoProgramacionShadersYMateriales\ProgramacionShaders\bin\Debug\net7.0\runtimes\win-x64\native\stbi.lib

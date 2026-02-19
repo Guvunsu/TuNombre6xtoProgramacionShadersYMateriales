@@ -1,29 +1,27 @@
 #version 330 core
+layout(location=0) in vec3 aPos;
+layout(location=1) in vec3 aNormal;
+layout(location=2) in vec3 aTangent;
+layout(location=3) in vec2 aUV;
 
-in vec2 vUV;
-in mat3 vTBN;
+uniform mat4 uModel;
+uniform mat4 uView;
+uniform mat4 uProj;
 
-uniform sampler2D uDiffuse;
-uniform sampler2D uNormalMap;
-
-uniform vec3 uLightDir;
-uniform vec3 uLightColor;
-uniform float uAmbient;
-
-out vec4 FragColor;
+out vec2 vUV;
+out mat3 vTBN;
 
 void main()
 {
-    vec3 normalTex = texture(uNormalMap, vUV).rgb;
-    normalTex = normalTex * 2.0 - 1.0;
+    vUV = aUV;
 
-    vec3 N = normalize(vTBN * normalTex);
+    vec3 N = normalize(mat3(uModel) * aNormal);
+    vec3 T = normalize(mat3(uModel) * aTangent);
+    T = normalize(T - dot(T, N) * N);
+    vec3 B = cross(N, T);
 
-    float diff = max(dot(N, normalize(-uLightDir)), 0.0);
+    vTBN = mat3(T, B, N);
 
-    vec3 color = texture(uDiffuse, vUV).rgb;
-
-    vec3 lighting = color * (uAmbient + diff * uLightColor);
-
-    FragColor = vec4(lighting, 1.0);
+    vec4 world = uModel * vec4(aPos, 1.0);
+    gl_Position = uProj * uView * world;
 }

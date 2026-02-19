@@ -198,6 +198,33 @@
           "lib/netstandard2.0/StbImageSharp.dll": {}
         }
       },
+      "StbiSharp/1.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.0/StbiSharp.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/StbiSharp.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libstbi.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-x64/native/libstbi.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-x64/native/stbi.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/stbi.lib": {
+            "assetType": "native",
+            "rid": "win-x64"
+          }
+        }
+      },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
         "type": "package",
         "compile": {
@@ -413,6 +440,25 @@
         "stbimagesharp.nuspec"
       ]
     },
+    "StbiSharp/1.2.1": {
+      "sha512": "jbi94g3UDVAC3vH6jKZmmADH4Z6tGqbcdlyGhT/WZN9UE8OjjvpGFE5zF+UCSmIdya6iJ+Zo5VvxdQywSKN0Uw==",
+      "type": "package",
+      "path": "stbisharp/1.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/netcoreapp2.0/StbiSharp.dll",
+        "lib/netcoreapp3.0/StbiSharp.dll",
+        "lib/netstandard2.0/StbiSharp.dll",
+        "runtimes/linux-x64/native/libstbi.so",
+        "runtimes/osx-x64/native/libstbi.dylib",
+        "runtimes/win-x64/native/stbi.dll",
+        "runtimes/win-x64/native/stbi.lib",
+        "stbisharp.1.2.1.nupkg.sha512",
+        "stbisharp.nuspec"
+      ]
+    },
     "System.Runtime.CompilerServices.Unsafe/6.0.0": {
       "sha512": "/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
       "type": "package",
@@ -442,27 +488,28 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "OpenTK >= 4.9.4",
-      "StbImageSharp >= 2.30.15"
+      "StbImageSharp >= 2.30.15",
+      "StbiSharp >= 1.2.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gavry\\.nuget\\packages\\": {},
+    "C:\\Users\\PC2-Alumno 1\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "I:\\Documentos\\Programacion\\TuNombre6xtoProgramacionShadersYMateriales\\ProgramacionShaders\\ProgramacionShaders.csproj",
+      "projectUniqueName": "C:\\Users\\PC2-Alumno 1\\Documents\\TuNombre6xtoProgramacionShadersYMateriales\\ProgramacionShaders\\ProgramacionShaders.csproj",
       "projectName": "ProgramacionShaders",
-      "projectPath": "I:\\Documentos\\Programacion\\TuNombre6xtoProgramacionShadersYMateriales\\ProgramacionShaders\\ProgramacionShaders.csproj",
-      "packagesPath": "C:\\Users\\gavry\\.nuget\\packages\\",
-      "outputPath": "I:\\Documentos\\Programacion\\TuNombre6xtoProgramacionShadersYMateriales\\ProgramacionShaders\\obj\\",
+      "projectPath": "C:\\Users\\PC2-Alumno 1\\Documents\\TuNombre6xtoProgramacionShadersYMateriales\\ProgramacionShaders\\ProgramacionShaders.csproj",
+      "packagesPath": "C:\\Users\\PC2-Alumno 1\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\PC2-Alumno 1\\Documents\\TuNombre6xtoProgramacionShadersYMateriales\\ProgramacionShaders\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\gavry\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\PC2-Alumno 1\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -471,6 +518,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -496,6 +544,10 @@
           "StbImageSharp": {
             "target": "Package",
             "version": "[2.30.15, )"
+          },
+          "StbiSharp": {
+            "target": "Package",
+            "version": "[1.2.1, )"
           }
         },
         "imports": [
@@ -514,7 +566,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.410\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }

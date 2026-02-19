@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="OpenTK" Version="4.9.4" />
     <PackageReference Include="StbImageSharp" Version="2.30.15" />
+    <PackageReference Include="StbiSharp" Version="1.2.1" />
   </ItemGroup>
 
   <!-- Copiar Shaders al ejecutable -->
@@ -26,11 +27,5 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
-  <ItemGroup>
-  <None Include="Shaders\**\*.*" CopyToOutputDirectory="PreserveNewest" />
-  <None Include="Textures\**\*.*" CopyToOutputDirectory="PreserveNewest" />
-</ItemGroup>
-
 
 </Project>
